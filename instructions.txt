@@ -1,0 +1,7 @@
+Add the information for each team member in the correct column
+
+Score each aspect for each member of your group (including yourself) between 0 (extremely poor) and 5 (outstanding)
+
+Scores and comments will be anonymised, so try to give useful (constructive) feedback where possible: that will make this exercise valuable to everyone.  Don't try to format the comments or insert text boxes, simply type the comments in to the cell, and don't worry about how they are rendered.
+
+You then need to award a final score for each member. You have a maximum total number of marks to give out,  which you can spread out as you wish amongst the team members, but again, with a minimum of 0 and a maximum of 5 for each member. You don't have to allocate all the marks if you don't feel it is warranted, but if you exceed the total then no marks will be allocated.
