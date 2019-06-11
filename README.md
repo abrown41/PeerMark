@@ -4,7 +4,14 @@ PeerMark
 The PeerMark package facilitates scalable peer marking assessment for group work
 exercises. There are two main utilities: generating the marking spreadsheets for
 distribution to the students, and extracting the data (feedback and marks) they
-assign to their team mates. 
+assign to their team mates. The package is written in Python 3.7.
+
+Screenshots
+-----------
+
+![Generated Spreadsheet](screenshots/generated_spreadsheet.png)
+
+![Harvested Feedback](screenshots/harvested_feedback.png)
 
 Dependencies
 ------------
@@ -17,11 +24,20 @@ Specific library requirements are
 
 the last of which is required only if PDF feedback files are required. For
 pypandoc to render the PDF documents, a system installation of LaTeX is
-required. The python packages can be installed by executing (for instance) 
+required. The python packages can be installed by executing 
 
     pip install pypandoc
 
-To install LaTeX, you can download [MacTex](http://www.tug.org/mactex/downloading.html) (for instance). 
+or
+    conda install pypandoc
+
+(or whatever package installer you use for python).
+
+There are several ways to install LaTeX.
+
+* you can download [MacTex](http://www.tug.org/mactex/downloading.html) 
+* you can use macports `sudo port install latex`
+* you can find, download and instal another LaTeX package online
 
 If pypandoc and LaTeX are not installed, you can still execute the program to
 extract the peer review marks, and the feedback will be saved in markdown
@@ -49,12 +65,12 @@ The student csv file should be in the format [Full Name], [Team Number],
 
 In principle you could simply number your teams A1-A100 (or however many you
 need), but you can also add subgroups, e.g. A1-A10, B1-B10, C1-C10, in order to
-break up the teams by tutorial group (for instance).
+break up the teams by tutorial group, computer class, etc.
 
 * The template spreadsheet
 
 A template is provided in the templates/ directory. You can change the questions
-the students answer, but should not change the number of questions (unless you
+the students answer, but should not change the number of questions (yet, unless you
 want to dig around in the code to account for that change). 
 
 * The instructions you want your students to follow. 
