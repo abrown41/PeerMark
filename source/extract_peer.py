@@ -2,7 +2,8 @@
 teams_file           = "teams.csv"            # csv file containing list of students and their teams
 output_marks         = "marks_master.xlsx"
 
-generate_feedback = False
+generate_feedback = True
+pdfoutput = False
 totmarks = 10
 
 ################################################################################
@@ -116,7 +117,13 @@ def write_sheet(fname,data):
 # once the individual feedback has been collated for each student, create a
 # pretty PDF to send to each student, and extract the final mark also
 
-import pypandoc
+try:
+    import pypandoc
+    pdfoutput = (generate_feedback and pdfoutput)
+except ImportError:
+    pdfoutput = False
+    pass
+
 from subprocess import call
 import os
 import sys
@@ -132,7 +139,7 @@ try:
         stud_num  = student.split(',')[-1].strip('\n')
 
         inpfile = stud_num+".md"
-        if generate_feedback:
+        if pdfoutput:
             try:
                 outfile = 'feedback/'+stud_num+".pdf"
                 if os.path.isfile(inpfile):
@@ -144,7 +151,10 @@ try:
                 pass
         score = extract_final_marks(inpfile)
         data_struct.append((stud_name, stud_num, score))
-        call(["rm", inpfile])
+        if (not generate_feedback) or (pdfoutput):
+            call(["rm", inpfile])
+        else:
+            call(["mv", inpfile, "feedback/"])
 
 except:
     sys.exit("could not extract student names from "+teams_file)
