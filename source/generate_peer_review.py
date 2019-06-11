@@ -1,8 +1,8 @@
 ################################################################################
 
 teams_file           = "teams.csv"            # csv file containing list of students and their teams
-template_spreadsheet = "../templates/template_spreadsheet.xlsx"        # xlsx file containing template spreadsheet
-instruction_file     = "../templates/instructions.txt"  # text file containing instructions for completing the spreadsheet
+template_spreadsheet = "../../templates/template_spreadsheet.xlsx"        # xlsx file containing template spreadsheet
+instruction_file     = "../../templates/instructions.txt"  # text file containing instructions for completing the spreadsheet
 
 ################################################################################
 
