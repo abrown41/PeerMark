@@ -2,38 +2,14 @@
 teams_file           = "teams.csv"            # csv file containing list of students and their teams
 output_marks         = "marks_master.xlsx"
 
-team_letters = ['A','B','C','D'] # Allows for subgroups of teams (e.g. by tutorial)
-no_of_teams = 11 # the maximum number of teams in a subgroup
-
-generate_feedback = True
+generate_feedback = False
 totmarks = 10
 
 ################################################################################
 
 import os
+from teams import *
 
-def construct_teamlist():
-    teamlist=[]
-    for lett in team_letters:
-        for num in range(1,no_of_teams+1):
-            teamlist.append(lett+str(num))
-    return teamlist
-
-def get_teams(fname):
-    ipf = open(fname,'r')
-    contents=ipf.readlines()
-    data=[]
-    for line in contents:
-        data.append((line.split(',')[0],line.split(',')[1],line.split(',')[-1].strip('\n')))
-    return find_teams(set(data))
-
-
-def find_teams(names):
-    from collections import defaultdict
-    d = defaultdict(list)
-    for fn, ln, sn in names:
-        d[ln].append((fn,sn))
-    return dict((k,v) for (k,v) in d.items() if len(v)>1)
 
 def extract_data(fname,numteam):
     import xlrd
@@ -86,8 +62,8 @@ def writedata(scores,stud_list):
                 writescores(item,opf)
             opf.close()
 
-teamlist = construct_teamlist()
-stud_names= (get_teams('teams.csv'))
+teamlist = extract_teams(teams_file)
+stud_names= get_teams(teams_file)
 
 for team in teamlist:
     try:
