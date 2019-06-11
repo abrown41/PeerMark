@@ -1,11 +1,8 @@
 ################################################################################
 
 teams_file           = "teams.csv"            # csv file containing list of students and their teams
-template_spreadsheet = "template_spreadsheet.xlsx"        # xlsx file containing template spreadsheet
-instruction_file     = "instructions.txt"  # text file containing instructions for completing the spreadsheet
-
-team_letters = ['A', 'B', 'C'] # Allows for subgroups of teams (e.g. by tutorial)
-no_of_teams = 11 # the maximum number of teams in a subgroup
+template_spreadsheet = "../templates/template_spreadsheet.xlsx"        # xlsx file containing template spreadsheet
+instruction_file     = "../templates/instructions.txt"  # text file containing instructions for completing the spreadsheet
 
 ################################################################################
 
