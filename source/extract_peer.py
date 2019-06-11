@@ -1,6 +1,7 @@
 ################################################################################
 teams_file           = "teams.csv"            # csv file containing list of students and their teams
 output_marks         = "marks_master.xlsx"
+template_tex         = "../../templates/template.tex"
 
 generate_feedback = True
 pdfoutput = False
@@ -143,7 +144,7 @@ try:
             try:
                 outfile = 'feedback/'+stud_num+".pdf"
                 if os.path.isfile(inpfile):
-                    pypandoc.convert_file(inpfile, 'pdf', outputfile = outfile, extra_args=['--template=../template.tex'])
+                    pypandoc.convert_file(inpfile, 'pdf', outputfile = outfile, extra_args=['--template='+template_tex])
                 else:
                     print ("could not locate file " + inpfile)
             except:

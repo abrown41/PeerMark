@@ -9,8 +9,10 @@ assign to their team mates. The package is written in Python 3.7.
 Screenshots
 -----------
 
+### Generated Spreadsheet
 ![Generated Spreadsheet](screenshots/generated_spreadsheet.png)
 
+### Harvested Feedback
 ![Harvested Feedback](screenshots/harvested_feedback.png)
 
 Dependencies
