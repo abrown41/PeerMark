@@ -6,10 +6,10 @@ import os
 # csv file containing list of students and their teams
 teams_file = "./teams.csv"
 # xlsx file containing template spreadsheet
-template_spreadsheet = "./template_spreadsheet.xlsx"
+template_spreadsheet = [f"./team_of_{ii}.xlsx" for ii in [3, 4, 5]]
 
 # Check input files all exist
-for fname in [teams_file, template_spreadsheet]:
+for fname in [teams_file] + template_spreadsheet:
     if (not os.path.isfile(fname)):
         sys.exit("File " + fname + " not found")
 
@@ -35,7 +35,8 @@ def write_sheet(fname, team, wb):
     opwb.save(opname)
 
 
-wb = load_workbook(template_spreadsheet)
+
+wbs = [load_workbook(temp) for temp in template_spreadsheet]
 teamlist = extract_teams(teams_file)
 stud_names = (get_teams(teams_file))
 
@@ -48,6 +49,8 @@ for team in teamlist:
 
     if stud_list:
         teamnames = [name[0] for name in stud_list]
+        num_studs = len(teamnames)
+        wb = wbs[num_studs - 3]
 #        for name in stud_list:
 #            und_name = name[0].replace(" ", "_")+"_"+name[1]
         tname = team.replace(" ", "_")
