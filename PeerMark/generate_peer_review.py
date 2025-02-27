@@ -45,9 +45,11 @@ def write_sheet(fname, team, wb):
 
 
 def upload_spreadsheets():
+    from tqdm import tqdm
     args = read_command_line()
     wbs = load_spreadsheets()
-    for group in args.group.get_groups():
+    groups = [g for g in args.group.get_groups()]
+    for group in tqdm(groups, desc="uploading spreadsheets", ascii=True):
         group_members = []
         for user in group.get_users():
             group_members.append(args.course.get_user(user.id).name)
