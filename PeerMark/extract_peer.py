@@ -84,9 +84,13 @@ def grade_submissions(args, group_dict):
         writedata(fulldf, subs)
 
 
-if __name__ == '__main__':
+def main():
     from canvas_selector import cleanup
     args = read_command_line()
     group_dict = download_submissions(args)
     grade_submissions(args, group_dict)
-    cleanup(args.ass)
+    cleanup(args.ass.assignment_id)
+
+
+if __name__ == '__main__':
+    main()
