@@ -1,0 +1,5 @@
+numpy
+pandas
+openpyxl
+canvas_selector
+tqdm
