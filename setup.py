@@ -10,7 +10,7 @@ import versioneer
 min_version = (3, 7)
 if sys.version_info < min_version:
     error = """
-peer_uploader does not support Python {0}.{1}.
+peermark does not support Python {0}.{1}.
 Python {2}.{3} and above is required. Check your Python version like so:
 
 python3 --version
@@ -34,7 +34,7 @@ with open(path.join(here, 'requirements.txt')) as requirements_file:
 
 
 setup(
-    name='PeerMark',
+    name='peermark',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="Python package for building/grading Peer Marking Spreadsheets",
