@@ -61,6 +61,7 @@ def writedata(df, subs):
         df_.columns = ['' for _ in range(len(df_.columns))]
 
         df_.to_excel(fname)
+        df_ = df_.replace(np.nan, 7)
         mark = np.round(10*np.average(df_.iloc[[len(df_)-1]]),0)
         update_grade(sub, mark)
         sub.upload_comment(fname)
@@ -81,6 +82,7 @@ def grade_submissions(args, group_dict):
                 tmpdf = extract_data(fname)
                 fulldf = pd.concat([fulldf, tmpdf], axis=1)
 
+        fulldf.to_csv('op.csv')
         writedata(fulldf, subs)
 
 
@@ -89,7 +91,7 @@ def main():
     args = read_command_line()
     group_dict = download_submissions(args)
     grade_submissions(args, group_dict)
-    cleanup(args.ass.assignment_id)
+    cleanup(args.ass.id)
 
 
 if __name__ == '__main__':
