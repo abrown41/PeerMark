@@ -70,10 +70,12 @@ def writedata(df, subs, args):
 
         df_.to_excel(fname)
         df_ = df_.replace(np.nan, 7)
-        mark = np.round(10*np.average(df_.iloc[[len(df_)-1]]),0)
+        markslist = df_.tail(1).values[0].tolist()
+
+        mark = np.round(10*np.average(markslist),0)
         if args.dryrun:
             with open('marks.csv', 'a') as f:
-                f.write(f"{sub.name}, {mark}\n")
+                f.write(f"{sub.name}, {mark}, {','.join(str(item) for item in markslist)}\n")
         else:
            update_grade(sub, mark)
            sub.upload_comment(fname)
